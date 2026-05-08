@@ -3,23 +3,33 @@ plugins {
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
 }
+
 android {
     namespace "com.hanif.gkmap"
     compileSdk 34
-    ndkVersion flutter.ndkVersion
+    ndkVersion "26.1.10909125"
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    kotlinOptions { jvmTarget = '1.8' }
-    sourceSets { main.java.srcDirs += 'src/main/kotlin' }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    sourceSets {
+        main.java.srcDirs += "src/main/kotlin"
+    }
+
     defaultConfig {
         applicationId "com.hanif.gkmap"
-        minSdkVersion 21
-        targetSdkVersion 34
+        minSdk 21
+        targetSdk 34
         versionCode flutter.versionCode
         versionName flutter.versionName
     }
+
     buildTypes {
         release {
             signingConfig signingConfigs.debug
@@ -28,5 +38,7 @@ android {
         }
     }
 }
-flutter { source '../..' }
-dependencies { implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version" }
+
+flutter {
+    source "../.."
+}
